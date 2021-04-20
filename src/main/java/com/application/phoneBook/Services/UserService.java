@@ -10,8 +10,8 @@ import java.util.List;
 @Service
 public class UserService {
     private List<User> userList = new ArrayList<>(){{
-        add(new User(1l,"User1"));
-        add(new User(2l,"User2"));
+        add(new User("1","User1"));
+        add(new User("2","User2"));
     }};
 
     public List<UserModel> getUserList() {
@@ -24,5 +24,9 @@ public class UserService {
 
     public UserModel userToModel(User user){
         return new UserModel(user.getId(), user.getName());
+    }
+
+    public void addUser(User user){
+        userList.add(user);
     }
 }
