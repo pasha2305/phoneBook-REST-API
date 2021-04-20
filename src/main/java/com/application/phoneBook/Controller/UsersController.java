@@ -1,6 +1,7 @@
 package com.application.phoneBook.Controller;
 
 import com.application.phoneBook.Entity.User;
+import com.application.phoneBook.Exception.UserNotFound;
 import com.application.phoneBook.Services.UserService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -15,8 +16,7 @@ public class UsersController {
     public ResponseEntity getAll(){
         try{
             return ResponseEntity.ok().body(userService.getUserList());
-        }
-        catch (Exception e){
+        } catch (Exception e){
             return ResponseEntity.badRequest().body("Произошла ошибка.");
         }
     }
@@ -26,10 +26,22 @@ public class UsersController {
         try{
             userService.addUser(user);
             return ResponseEntity.ok().body("Пользователь успешно добавлен!");
-        }catch (Exception e){
+        } catch (Exception e){
             return ResponseEntity.badRequest().body("Произошла ошибка.");
         }
     }
+
+    @GetMapping("{id}")
+    public ResponseEntity getOne(@PathVariable String id){
+        try {
+            return ResponseEntity.ok().body(userService.getOne(id));
+        } catch (UserNotFound f){
+            return ResponseEntity.badRequest().body(f.getMessage());
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().body("Произошла ошибка.");
+        }
+    }
+
 //    @GetMapping
 //    public ResponseEntity
 }

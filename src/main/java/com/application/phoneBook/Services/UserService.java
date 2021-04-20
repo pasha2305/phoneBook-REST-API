@@ -1,6 +1,7 @@
 package com.application.phoneBook.Services;
 
 import com.application.phoneBook.Entity.User;
+import com.application.phoneBook.Exception.UserNotFound;
 import com.application.phoneBook.Model.UserModel;
 import org.springframework.stereotype.Service;
 
@@ -28,5 +29,19 @@ public class UserService {
 
     public void addUser(User user){
         userList.add(user);
+    }
+
+    public UserModel getOne(String id) throws UserNotFound {
+        UserModel user = null;
+        for (User u: userList){
+            if (u.getId().equals(id)){
+                user = userToModel(u);
+                return user;
+            }
+        }
+        if (user == null){
+            throw new UserNotFound("Пользователь не найден.");
+        }
+        return user;
     }
 }
