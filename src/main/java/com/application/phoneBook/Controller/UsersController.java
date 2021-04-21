@@ -53,6 +53,17 @@ public class UsersController {
         }
     }
 
+    @DeleteMapping("{id}")
+    public ResponseEntity delete(@PathVariable String id){
+        try{
+            return ResponseEntity.ok().body(userService.delete(id));
+        }catch (UserNotFound f){
+            return ResponseEntity.badRequest().body(f.getMessage());
+        }catch (Exception e){
+            return ResponseEntity.badRequest().body("Произошла ошибка.");
+        }
+    }
+
 //    @GetMapping
 //    public ResponseEntity
 }

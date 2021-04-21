@@ -46,4 +46,10 @@ public class UserService {
         u.setName(user.getName());
         return u;
     }
+
+    public List<UserModel> delete(String id) throws UserNotFound {
+        User user = getOneUser(id);
+        userList.remove(user);
+        return getUserList();
+    }
 }
