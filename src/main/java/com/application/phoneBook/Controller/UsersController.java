@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/users")
 public class UsersController {
 
-    UserService userService = new UserService();
+    static private UserService userService = new UserService();
 
     @GetMapping
     public ResponseEntity getAll(){
@@ -64,6 +64,10 @@ public class UsersController {
         }
     }
 
-//    @GetMapping
+    static public UserService getUserService() {
+        return userService;
+    }
+
+    //    @GetMapping
 //    public ResponseEntity
 }

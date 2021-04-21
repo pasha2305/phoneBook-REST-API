@@ -52,4 +52,8 @@ public class UserService {
         userList.remove(user);
         return getUserList();
     }
+
+    public List <User> getUsers(){
+        return userList;
+    }
 }
