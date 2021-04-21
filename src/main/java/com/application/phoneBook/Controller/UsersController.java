@@ -64,6 +64,15 @@ public class UsersController {
         }
     }
 
+    @GetMapping("{name}")
+    public ResponseEntity findUsersByName(@PathVariable String name){
+        try{
+            return ResponseEntity.ok().body(userService.findByName(name));
+        }catch (Exception e){
+            return ResponseEntity.badRequest().body("Произошла ошибка.");
+        }
+    }
+
     static public UserService getUserService() {
         return userService;
     }

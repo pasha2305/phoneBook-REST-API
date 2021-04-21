@@ -53,6 +53,16 @@ public class UserService {
         return getUserList();
     }
 
+    public List<UserModel> findByName(String name){
+        List<UserModel> findList = new ArrayList<>();
+        for(User u : userList){
+            if (u.getName().contains(name)){
+                findList.add(userToModel(u));
+            }
+        }
+        return findList;
+    }
+
     public List <User> getUsers(){
         return userList;
     }
