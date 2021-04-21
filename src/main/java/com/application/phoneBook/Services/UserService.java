@@ -31,17 +31,19 @@ public class UserService {
         userList.add(user);
     }
 
-    public UserModel getOne(String id) throws UserNotFound {
-        UserModel user = null;
+    public User getOneUser(String id) throws UserNotFound {
         for (User u: userList){
             if (u.getId().equals(id)){
-                user = userToModel(u);
-                return user;
+                return u;
             }
         }
-        if (user == null){
-            throw new UserNotFound("Пользователь не найден.");
-        }
-        return user;
+        throw new UserNotFound("Пользователь не найден.");
+    }
+
+    public User update(String id, User user) throws UserNotFound {
+        User u = getOneUser(id);
+        u.setId(id);
+        u.setName(user.getName());
+        return u;
     }
 }

@@ -34,10 +34,21 @@ public class UsersController {
     @GetMapping("{id}")
     public ResponseEntity getOne(@PathVariable String id){
         try {
-            return ResponseEntity.ok().body(userService.getOne(id));
+            return ResponseEntity.ok().body(userService.userToModel(userService.getOneUser(id)));
         } catch (UserNotFound f){
             return ResponseEntity.badRequest().body(f.getMessage());
         } catch (Exception e) {
+            return ResponseEntity.badRequest().body("Произошла ошибка.");
+        }
+    }
+
+    @PutMapping("{id}")
+    public ResponseEntity update(@PathVariable String id, @RequestBody User user){
+        try{
+            return ResponseEntity.ok().body(userService.userToModel(userService.update(id, user)));
+        }catch (UserNotFound f){
+            return ResponseEntity.badRequest().body(f.getMessage());
+        }catch (Exception e){
             return ResponseEntity.badRequest().body("Произошла ошибка.");
         }
     }
