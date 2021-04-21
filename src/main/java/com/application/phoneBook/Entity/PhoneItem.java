@@ -1,21 +1,21 @@
 package com.application.phoneBook.Entity;
 
 public class PhoneItem {
-    private Long id;
+    private String id;
     private String contactName;
     private String number;
 
-    public PhoneItem(Long id, String contactName, String number) {
+    public PhoneItem(String id, String contactName, String number) {
         this.id = id;
         this.contactName = contactName;
         this.number = number;
     }
 
-    public Long getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(String id) {
         this.id = id;
     }
 

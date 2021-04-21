@@ -46,4 +46,30 @@ public class PhoneItemsController {
             return ResponseEntity.badRequest().body("Произошла ошибка.");
         }
     }
+
+    @DeleteMapping("{id_user}/phones/{id_phone}")
+    public ResponseEntity deletePhoneItem(@PathVariable String id_user, @PathVariable String id_phone){
+        try {
+            return ResponseEntity.ok().body(phoneService.deletePhone(id_user, id_phone));
+        }catch(UserNotFound f){
+            return ResponseEntity.badRequest().body(f.getMessage());
+        }catch (PhoneItemNotFound f1){
+            return ResponseEntity.badRequest().body(f1.getMessage());
+        }catch (Exception e){
+            return ResponseEntity.badRequest().body("Произошла ошибка");
+        }
+    }
+
+    @PutMapping("{id_user}/phones/{id_phone}")
+    public ResponseEntity updatePhoneItem(@PathVariable String id_user, @PathVariable String id_phone, @RequestBody PhoneItem phoneItem){
+        try{
+            return ResponseEntity.ok().body(phoneService.updateItem(id_user, id_phone, phoneItem));
+        }catch (UserNotFound f){
+            return ResponseEntity.badRequest().body(f.getMessage());
+        }catch (PhoneItemNotFound f1){
+            return ResponseEntity.badRequest().body(f1.getMessage());
+        }catch (Exception e){
+            return ResponseEntity.badRequest().body("Произошла ошибка.");
+        }
+    }
 }

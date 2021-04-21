@@ -31,4 +31,17 @@ public class PhoneService {
         }
         throw new PhoneItemNotFound("Записи с указанным id не найдено.");
     }
+
+    public List<PhoneItem> deletePhone(String idUser, String idPhoneItem) throws UserNotFound, PhoneItemNotFound {
+        userService.getOneUser(idUser).getPhoneItemList().remove(getPhoneItem(idUser, idPhoneItem));
+        return userService.getOneUser(idUser).getPhoneItemList();
+    }
+
+    public PhoneItem updateItem(String idUser, String idPhoneItem, PhoneItem phoneItem) throws UserNotFound, PhoneItemNotFound {
+        PhoneItem phoneItem1 = getPhoneItem(idUser, idPhoneItem);
+        phoneItem1.setId(idPhoneItem);
+        phoneItem1.setContactName(phoneItem.getContactName());
+        phoneItem1.setNumber(phoneItem.getNumber());
+        return phoneItem1;
+    }
 }
