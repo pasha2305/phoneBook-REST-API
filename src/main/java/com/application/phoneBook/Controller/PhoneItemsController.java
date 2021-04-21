@@ -34,7 +34,7 @@ public class PhoneItemsController {
         }
     }
 
-    @GetMapping("{id_user}/phones/{id_phone}")
+    @GetMapping("{id_user}/phones/id/{id_phone}")
     public ResponseEntity getPhoneItemById(@PathVariable String id_user, @PathVariable String id_phone) {
         try {
             return ResponseEntity.ok().body(phoneService.getPhoneItem(id_user, id_phone));
@@ -73,7 +73,7 @@ public class PhoneItemsController {
         }
     }
 
-    @GetMapping("{id_user}/phones/{number}")
+    @GetMapping("{id_user}/phones/number/{number}")
     public ResponseEntity findByNumber(@PathVariable String id_user, @PathVariable String number){
         try{
             return ResponseEntity.ok().body(phoneService.findByNumber(id_user, number));

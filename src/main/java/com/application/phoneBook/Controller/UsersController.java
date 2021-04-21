@@ -7,7 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/users")
+@RequestMapping("users")
 public class UsersController {
 
     static private UserService userService = new UserService();
@@ -31,7 +31,7 @@ public class UsersController {
         }
     }
 
-    @GetMapping("{id}")
+    @GetMapping("/id/{id}")
     public ResponseEntity getOne(@PathVariable String id){
         try {
             return ResponseEntity.ok().body(userService.userToModel(userService.getOneUser(id)));
@@ -64,7 +64,7 @@ public class UsersController {
         }
     }
 
-    @GetMapping("{name}")
+    @GetMapping("/name/{name}")
     public ResponseEntity findUsersByName(@PathVariable String name){
         try{
             return ResponseEntity.ok().body(userService.findByName(name));
