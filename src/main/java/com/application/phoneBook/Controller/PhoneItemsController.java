@@ -72,4 +72,15 @@ public class PhoneItemsController {
             return ResponseEntity.badRequest().body("Произошла ошибка.");
         }
     }
+
+    @GetMapping("{id_user}/phones/{number}")
+    public ResponseEntity findByNumber(@PathVariable String id_user, @PathVariable String number){
+        try{
+            return ResponseEntity.ok().body(phoneService.findByNumber(id_user, number));
+        }catch (UserNotFound f) {
+            return ResponseEntity.badRequest().body(f.getMessage());
+        }catch (Exception e){
+            return ResponseEntity.badRequest().body("Произошла ошибка.");
+        }
+    }
 }

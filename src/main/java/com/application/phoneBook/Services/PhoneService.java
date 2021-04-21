@@ -2,12 +2,12 @@ package com.application.phoneBook.Services;
 
 import com.application.phoneBook.Controller.UsersController;
 import com.application.phoneBook.Entity.PhoneItem;
-import com.application.phoneBook.Entity.User;
 import com.application.phoneBook.Exception.PhoneItemNotFound;
 import com.application.phoneBook.Exception.UserNotFound;
-import com.application.phoneBook.Model.UserModel;
+
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -43,5 +43,14 @@ public class PhoneService {
         phoneItem1.setContactName(phoneItem.getContactName());
         phoneItem1.setNumber(phoneItem.getNumber());
         return phoneItem1;
+    }
+
+    public List<PhoneItem> findByNumber(String idUser, String number) throws UserNotFound {
+        List<PhoneItem> findPhoneItems = new ArrayList<>();
+        for(PhoneItem pi : userService.getOneUser(idUser).getPhoneItemList()){
+            if (pi.getNumber().contains(number))
+                findPhoneItems.add(pi);
+        }
+        return findPhoneItems;
     }
 }
