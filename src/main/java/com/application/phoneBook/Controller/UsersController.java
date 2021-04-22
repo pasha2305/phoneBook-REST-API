@@ -9,9 +9,9 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("users")
 public class UsersController {
-
     static private UserService userService = new UserService();
 
+    //получение списка всех пользователей
     @GetMapping
     public ResponseEntity getAll(){
         try{
@@ -21,6 +21,7 @@ public class UsersController {
         }
     }
 
+    //добавление нового пользователя
     @PostMapping
     public ResponseEntity addUser(@RequestBody User user){
         try{
@@ -31,6 +32,7 @@ public class UsersController {
         }
     }
 
+    //получение пользователя по id
     @GetMapping("/id/{id}")
     public ResponseEntity getOne(@PathVariable String id){
         try {
@@ -42,6 +44,7 @@ public class UsersController {
         }
     }
 
+    //обновление пользователя
     @PutMapping("{id}")
     public ResponseEntity update(@PathVariable String id, @RequestBody User user){
         try{
@@ -53,6 +56,7 @@ public class UsersController {
         }
     }
 
+    //удаление пользователя
     @DeleteMapping("{id}")
     public ResponseEntity delete(@PathVariable String id){
         try{
@@ -64,6 +68,7 @@ public class UsersController {
         }
     }
 
+    //поиск пользователя по имени
     @GetMapping("/name/{name}")
     public ResponseEntity findUsersByName(@PathVariable String name){
         try{

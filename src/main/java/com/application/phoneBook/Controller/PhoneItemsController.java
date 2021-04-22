@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 public class PhoneItemsController {
     PhoneService phoneService = new PhoneService();
 
+    //получение списка записей из телефонной книжки пользователей
     @GetMapping("{id}/phones")
     public ResponseEntity getPhones(@PathVariable String id){
         try{
@@ -23,6 +24,7 @@ public class PhoneItemsController {
         }
     }
 
+    //добавление записи в телефонную книжку пользователя
     @PostMapping("{id}/phones")
     public ResponseEntity addPhone(@PathVariable String id, @RequestBody PhoneItem phoneItem){
         try {
@@ -34,6 +36,7 @@ public class PhoneItemsController {
         }
     }
 
+    //получение записи из телефонной книжки по id
     @GetMapping("{id_user}/phones/id/{id_phone}")
     public ResponseEntity getPhoneItemById(@PathVariable String id_user, @PathVariable String id_phone) {
         try {
@@ -47,6 +50,7 @@ public class PhoneItemsController {
         }
     }
 
+    //удаление записи из телефонной книжки пользователя по id
     @DeleteMapping("{id_user}/phones/{id_phone}")
     public ResponseEntity deletePhoneItem(@PathVariable String id_user, @PathVariable String id_phone){
         try {
@@ -60,6 +64,7 @@ public class PhoneItemsController {
         }
     }
 
+    //обновление записи в телефонной книжке пользователя
     @PutMapping("{id_user}/phones/{id_phone}")
     public ResponseEntity updatePhoneItem(@PathVariable String id_user, @PathVariable String id_phone, @RequestBody PhoneItem phoneItem){
         try{
@@ -73,6 +78,8 @@ public class PhoneItemsController {
         }
     }
 
+
+    //поиск записи в телефонной книжке по номеру телефона
     @GetMapping("{id_user}/phones/number/{number}")
     public ResponseEntity findByNumber(@PathVariable String id_user, @PathVariable String number){
         try{
