@@ -79,6 +79,8 @@ public class PhoneItemsController {
             return ResponseEntity.ok().body(phoneService.findByNumber(id_user, number));
         }catch (UserNotFound f) {
             return ResponseEntity.badRequest().body(f.getMessage());
+        }catch (PhoneItemNotFound f1) {
+            return ResponseEntity.badRequest().body(f1.getMessage());
         }catch (Exception e){
             return ResponseEntity.badRequest().body("Произошла ошибка.");
         }

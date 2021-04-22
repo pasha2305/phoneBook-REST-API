@@ -11,8 +11,8 @@ import java.util.List;
 @Service
 public class UserService {
     private List<User> userList = new ArrayList<>(){{
-        add(new User("1","User1"));
-        add(new User("2","User2"));
+//        add(new User("1","User1"));
+//        add(new User("2","User2"));
     }};
 
     public List<UserModel> getUserList() {

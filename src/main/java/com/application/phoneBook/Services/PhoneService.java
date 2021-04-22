@@ -45,12 +45,16 @@ public class PhoneService {
         return phoneItem1;
     }
 
-    public List<PhoneItem> findByNumber(String idUser, String number) throws UserNotFound {
-        List<PhoneItem> findPhoneItems = new ArrayList<>();
-        for(PhoneItem pi : userService.getOneUser(idUser).getPhoneItemList()){
-            if (pi.getNumber().contains(number))
-                findPhoneItems.add(pi);
+    public PhoneItem findByNumber(String idUser, String number) throws UserNotFound, PhoneItemNotFound {
+        for(PhoneItem phoneItem : userService.getOneUser(idUser).getPhoneItemList()){
+            if (phoneItem.getNumber().equals(number)){
+                return phoneItem;
+            }
         }
-        return findPhoneItems;
+        throw new PhoneItemNotFound("Записи с указанным номером не найдено.");
+    }
+
+    public static UserService getUserService() {
+        return userService;
     }
 }
