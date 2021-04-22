@@ -10,11 +10,9 @@ import java.util.List;
 
 @Service
 public class UserService {
-    private List<User> userList = new ArrayList<>(){{
-//        add(new User("1","User1"));
-//        add(new User("2","User2"));
-    }};
+    private List<User> userList = new ArrayList<>(); //Список пользователей
 
+    //получение списка всех пользователей
     public List<UserModel> getUserList() {
         List<UserModel> userModelList = new ArrayList<>();
         for (User user : userList){
@@ -23,14 +21,17 @@ public class UserService {
         return userModelList;
     }
 
+    //преобразование сущности пользователя в модель
     public UserModel userToModel(User user){
         return new UserModel(user.getId(), user.getName());
     }
 
+    //добавление нового пользователя в список
     public void addUser(User user){
         userList.add(user);
     }
 
+    //получение одного пользователя по id
     public User getOneUser(String id) throws UserNotFound {
         for (User u: userList){
             if (u.getId().equals(id)){
@@ -40,6 +41,7 @@ public class UserService {
         throw new UserNotFound("Пользователь не найден.");
     }
 
+    //обновление данных пользователя
     public User update(String id, User user) throws UserNotFound {
         User u = getOneUser(id);
         u.setId(id);
@@ -47,12 +49,14 @@ public class UserService {
         return u;
     }
 
+    //удаление данных пользователя из списка
     public List<UserModel> delete(String id) throws UserNotFound {
         User user = getOneUser(id);
         userList.remove(user);
         return getUserList();
     }
 
+    //поиск пользователя по имени или фрагменту имени
     public List<UserModel> findByName(String name){
         List<UserModel> findList = new ArrayList<>();
         for(User u : userList){
@@ -63,6 +67,7 @@ public class UserService {
         return findList;
     }
 
+    //получение списка всех пользователей
     public List <User> getUsers(){
         return userList;
     }

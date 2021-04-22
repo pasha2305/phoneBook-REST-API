@@ -76,7 +76,4 @@ public class UsersController {
     static public UserService getUserService() {
         return userService;
     }
-
-    //    @GetMapping
-//    public ResponseEntity
 }
