@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.application.phoneBook.Services.PhoneServiceTest" tests="4" skipped="0" failures="0" errors="0" timestamp="2021-04-22T09:51:33" hostname="DESKTOP-7B9QHMI" time="0.01">
+  <properties/>
+  <testcase name="addPhoneItem" classname="com.application.phoneBook.Services.PhoneServiceTest" time="0.006"/>
+  <testcase name="updatePhone" classname="com.application.phoneBook.Services.PhoneServiceTest" time="0.001"/>
+  <testcase name="deletePhoneItem" classname="com.application.phoneBook.Services.PhoneServiceTest" time="0.003"/>
+  <testcase name="findUserByNameOrFragment" classname="com.application.phoneBook.Services.PhoneServiceTest" time="0.0"/>
+  <system-out><![CDATA[2
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

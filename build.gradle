@@ -2,13 +2,10 @@ plugins {
 	id 'org.springframework.boot' version '2.4.5'
 	id 'io.spring.dependency-management' version '1.0.11.RELEASE'
 	id 'java'
+	id 'application'
 }
 
-jar {
-	baseName = 'gs-gradle'
-	version =  '0.1.0'
-}
-
+mainClassName = 'com.application.phoneBook.PhoneBookApplication'
 group = 'com.application'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '11'
@@ -29,3 +26,4 @@ dependencies {
 test {
 	useJUnit()
 }
+
