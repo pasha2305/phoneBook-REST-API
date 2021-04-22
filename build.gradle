@@ -4,11 +4,17 @@ plugins {
 	id 'java'
 }
 
+jar {
+	baseName = 'gs-gradle'
+	version =  '0.1.0'
+}
+
 group = 'com.application'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '11'
 
 repositories {
+	mavenLocal()
 	mavenCentral()
 }
 
@@ -19,11 +25,6 @@ dependencies {
 	testImplementation('junit:junit:4.13')
 	implementation("com.google.guava:guava:30.1.1-jre")
 }
-
-//tasks.withType(Test){
-//	scanForTestClasses = false
-//	include "test/java/com/application/phoneBook/Services/UserServiceTest.class"
-//}
 
 test {
 	useJUnit()
